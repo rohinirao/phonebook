@@ -1,0 +1,20 @@
+---
+version: '3'
+# use with docker-compose up
+services:
+  mysql:
+    container_name: my_mysql
+    image: mysql/mysql-server:5.7
+    hostname: my_mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - my_mysql:/var/docker/my_mysql/
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=welcome1
+      - MYSQL_USER=my_mysql
+      - MYSQL_PASSWORD=welcome1
+      - MYSQL_DATABASE=my_development
+volumes:
+  my_mysql:
