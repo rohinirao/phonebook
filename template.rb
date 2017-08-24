@@ -70,8 +70,10 @@ files.each do |fn|
   rc_file_copy fn
 end
 # recursive copy files into app -- end
+remove_file './app/assets/stylesheets/application.css'
 run 'yarn'
-application do <<-RUBY
+application do
+  <<-RUBY
 config.active_record.schema_format = :sql
 config.autoload_paths << Rails.root.join('lib')
 RUBY
