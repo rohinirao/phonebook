@@ -1,0 +1,25 @@
+%h1 Listing contact_numbers
+
+%table
+  %thead
+    %tr
+      %th Contact
+      %th Label
+      %th Number
+      %th
+      %th
+      %th
+
+  %tbody
+    - @contact_numbers.each do |contact_number|
+      %tr
+        %td= contact_number.contact
+        %td= contact_number.label
+        %td= contact_number.number
+        %td= link_to 'Show', contact_number
+        %td= link_to 'Edit', edit_contact_number_path(contact_number)
+        %td= link_to 'Destroy', contact_number, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Contact number', new_contact_number_path
