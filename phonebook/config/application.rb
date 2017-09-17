@@ -18,6 +18,9 @@ Bundler.require(*Rails.groups)
 
 module Phonebook
   class Application < Rails::Application
+    config.active_record.schema_format = :sql
+config.autoload_paths << Rails.root.join('lib')
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
@@ -27,5 +30,6 @@ module Phonebook
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.assets.precompile += %w( application.css application.js )
   end
 end
