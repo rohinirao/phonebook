@@ -1,5 +1,5 @@
-<h1><%= "Editing Address for #{@contact.first_name}" %></h1>
+<%= link_to 'Back', contact_path(@contact.id) , class: "badge badge-info" %>
+<h4 class="card-title"><%= "Editing Address for #{@contact.first_name}" %></h4>
 
 <%= render 'form', address: @address %>
 
-<%= link_to 'Back', contact_path(@address.contact_id) %>

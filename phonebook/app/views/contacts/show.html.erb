@@ -1,53 +1,47 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Edit', edit_contact_path(@contact)  , class: "badge badge-info"%>
+<%= link_to 'Back', contacts_path  , class: "badge badge-info"%>
+<ul class="list-group">
+  
+</ul>
+<div class="container">
+  <dl class="dl-horizontal">
+    <dt>First name:</dt>
+    <dd><%= @contact.first_name %></dd>
+    <dt>Last name:</dt>
+    <dd><%= @contact.last_name %></dd>
+    <dt>Email:</dt>
+    <dd><%= @contact.email %></dd>
+    <dt>Notes:</dt>
+    <dd><%= @contact.notes %></dd>
+    <dt>Address</dt>
+    <dd><%= link_to 'Add Address', new_contact_address_path(@contact) , class: "badge badge-info" %></dd>
+    <dd>
+      <table class="table borderless input-width">
+        <% @contact.address.each do |contact| %>
+          <tr>
+            <td> <%= "#{contact.label}" %> </td>
+            <td> <%= contact.address %></td>
+            <td> <%= link_to 'Edit', edit_contact_address_path(@contact,contact) ,class: "badge badge-info"%></td>
+            <td> <%= link_to 'Destroy', contact_address_path(@contact,contact), method: :delete, data: { confirm: 'Are you sure?' } , class: "badge badge-info"%></td>
+          </tr>
+        <% end %>  
+      </table>
+    </dd>
 
-<p>
-  <strong>First name:</strong>
-  <%= @contact.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @contact.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @contact.email %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @contact.notes %>
-</p>
-<p>
-  <strong>Addresses:</strong>
-  <%= link_to 'Add Address', new_contact_address_path(@contact) %>
-  <% @contact.address.each do |contact| %>
-    <p>
-      <b>
-        <%= "#{contact.label} : " %>
-      </b>
-      <%= contact.address %>
-      <%= link_to 'Edit', edit_contact_address_path(@contact,contact) %>
-      <%= link_to 'Destroy', contact_address_path(@contact,contact), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
-  <% end %>
-</p>
-<p>
-  <b>Contact Number(s)</b>
-  <%= link_to 'Add Contact Number', new_contact_phone_number_path(@contact) %>
-  <% @contact.phone_number.each do |contact| %>
-    <p>
-      <b>
-        <%= "#{contact.label} : " %>
-      </b>
-      <%= contact.phone_number %>
-      <%= link_to 'Edit', edit_contact_phone_number_path(@contact,contact) %>
-      <%= link_to 'Destroy', contact_phone_number_path(@contact,contact), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
-  <% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+    <dt>Contact Number(s)</dt>
+    <dd><%= link_to 'Add Contact Number', new_contact_phone_number_path(@contact) , class: "badge badge-info"%></dd>
+    <dd>
+      <table class="table input-width">
+        <% @contact.phone_number.each do |contact| %>
+          <tr>
+            <td> <%= "#{contact.label} : " %> </td>
+            <td> <%= contact.phone_number %></td>
+            <td> <%= link_to 'Edit', edit_contact_phone_number_path(@contact,contact) , class: "badge badge-info" %> </td>
+            <td><%= link_to 'Destroy', contact_phone_number_path(@contact,contact), method: :delete, data: { confirm: 'Are you sure?' }  , class: "badge badge-info"%> </td>
+          </tr>
+        <% end %>  
+      </table>
+    </dd>
+  </dl>
+</div>

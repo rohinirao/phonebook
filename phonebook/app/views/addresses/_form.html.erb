@@ -11,17 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :label %>
-    <%= form.text_field :label, id: :address_label %>
+   <div class="form-group row">
+    <%= form.label :label , class: "col-sm-2 col-form-label"%>
+    <div class="col-sm-10">
+      <%= form.text_field :label, id: :address_label  , class: "form-control input-width"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_area :address, id: :address_address %>
+   <div class="form-group row">
+    <%= form.label :address , class: "col-sm-2 col-form-label"%>
+    <div class="col-sm-10">
+      <%= form.text_area :address, id: :address_address  , class: "form-control input-width"%>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>

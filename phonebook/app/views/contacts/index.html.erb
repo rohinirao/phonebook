@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Contacts</h1>
+<h2 class="card-title">Contacts</h2>
+<%= link_to 'Add Contact', new_contact_path  , class: "badge badge-primary"%>
 
-<table>
+<table class="table" style="width:30%;">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,10 +14,10 @@
   <tbody>
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= contact.first_name %></td>
-        <td><%= link_to '  Show |', contact %></td>
-        <td><%= link_to 'Edit |', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy |', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= contact.full_name %></td>
+        <td><%= link_to 'Show', contact %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,4 @@
 
 <br>
 
-<%= link_to 'Add Contact', new_contact_path %>
+<%= link_to 'Add Contact', new_contact_path  , class: "badge badge-primary"%>

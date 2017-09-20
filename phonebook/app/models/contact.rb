@@ -5,4 +5,8 @@ class Contact < ApplicationRecord
 	validates :first_name, :last_name, :email, :presence => true
 	validates_format_of :email , :with => /\A^(?:[a-z0-9._%+-]+@)(?:(?!\d+\.)[\w\-]{1,63}\.)+(?:[a-z]{2,})$\z/i,
     message: 'must be valid email address'
+
+    def full_name
+      first_name + " " + last_name
+    end
 end
