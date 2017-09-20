@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @contact.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @contact.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @contact.notes %>
+</p>
+<p>
+  <strong>Addresses:</strong>
+  <%= link_to 'Add Address', new_contact_address_path(@contact) %>
+  <% @contact.address.each do |contact| %>
+    <p>
+      <b>
+        <%= "#{contact.label} : " %>
+      </b>
+      <%= contact.address %>
+      <%= link_to 'Edit', edit_contact_address_path(@contact,contact) %>
+      <%= link_to 'Destroy', contact_address_path(@contact,contact), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+</p>
+<p>
+  <b>Contact Number(s)</b>
+  <%= link_to 'Add Contact Number', new_contact_phone_number_path(@contact) %>
+  <% @contact.phone_number.each do |contact| %>
+    <p>
+      <b>
+        <%= "#{contact.label} : " %>
+      </b>
+      <%= contact.phone_number %>
+      <%= link_to 'Edit', edit_contact_phone_number_path(@contact,contact) %>
+      <%= link_to 'Destroy', contact_phone_number_path(@contact,contact), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

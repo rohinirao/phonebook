@@ -30,6 +30,9 @@ config.autoload_paths << Rails.root.join('lib')
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.assets.precompile += %w( application.css application.js )
+
+    config.generators do |g|
+      g.template_engine :haml
+    end    
   end
 end
